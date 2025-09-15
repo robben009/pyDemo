@@ -24,7 +24,8 @@ greeting_func = get_greeting()
 greeting_func()  # 输出: Hello!
 
 
-# map()是一个高阶函数，接受一个函数和一个可迭代对象
+# map()是一个高阶函数，接受一个函数和一个可迭代对象。
+# 装饰器属于高阶函数（Higher-Order Function）的一种应用。高阶函数是指那些接受一个或多个函数作为参数，或者返回一个函数的函数
 numbers = [1, 2, 3, 4, 5]
 squared = map(lambda x: x**2, numbers)
 print(list(squared))  # 输出: [1, 4, 9, 16, 25]
