@@ -1,4 +1,4 @@
-# api.py
+# （Flask-SQLAlchemy版）
 from flask import Blueprint, request, jsonify
 
 from webDemo.model import db
@@ -8,9 +8,10 @@ from webDemo.model.user import User
 api_plus = Blueprint('api_plus', __name__)
 
 
-# 新增用户（Flask-SQLAlchemy版）
-@api_plus.route('/api/users2', methods=['POST'])
+# 新增用户
+@api_plus.post('/api/users2')
 def create_user2():
+    print(type(api_plus))
     data = request.get_json()
     required_fields = ['name', 'age', 'email']
     if not all(field in data for field in required_fields):
@@ -31,8 +32,9 @@ def create_user2():
         return jsonify({'error': '创建用户失败', 'detail': str(e)}), 500
 
 
-# 查询所有用户（Flask-SQLAlchemy版）
-@api_plus.route('/api/users2', methods=['GET'])
+
+# 查询所有用户
+@api_plus.get('/api/users2')
 def get_all_users2():
     try:
         # 等价于SELECT * FROM users ORDER BY create_time DESC
