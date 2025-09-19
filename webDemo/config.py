@@ -1,6 +1,7 @@
 # config.py
 import pymysql
 
+
 class Config:
     # MySQL数据库连接信息
     MYSQL_HOST = '150.158.121.165'    # 数据库主机地址（本地为127.0.0.1）
@@ -9,6 +10,10 @@ class Config:
     MYSQL_PASSWORD = 'JZh2019@nodejsjava'   # 数据库密码（根据实际情况修改）
     MYSQL_DB = 'todo'           # 数据库名（与前文创建的一致）
     MYSQL_CHARSET = 'utf8mb4'   # 字符集
+    # 数据库连接配置 (使用了SQLAlchemy才需要一下两个配置)
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:JZh2019%40nodejsjava@150.158.121.165:53306/todo'  # 连接数据库
+    SQLALCHEMY_TRACK_MODIFICATIONS = False  # 关闭对象修改追踪
+
 
 # 开发环境配置（继承Config）
 class DevelopmentConfig(Config):
@@ -27,6 +32,33 @@ config = {
     'production': ProductionConfig,
     'default': DevelopmentConfig
 }
+
+
+
+# # 初始化SQLAlchemy
+# db = SQLAlchemy(app)
+#
+# # 定义User模型（映射到users表）
+# class User(db.Model):
+#     __tablename__ = 'users'  # 数据库表名
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     name = db.Column(db.String(50), nullable=False)
+#     age = db.Column(db.Integer, nullable=False)
+#     email = db.Column(db.String(100), nullable=False, unique=True)
+#     create_time = db.Column(db.TIMESTAMP, default=db.func.current_timestamp())
+#
+#     # 将模型转换为字典（便于返回JSON）
+#     def to_dict(self):
+#         return {
+#             'id': self.id,
+#             'name': self.name,
+#             'age': self.age,
+#             'email': self.email,
+#             'create_time': self.create_time.strftime('%Y-%m-%d %H:%M:%S')
+#         }
+
+
+
 
 # 数据库连接函数
 def get_db_connection():
