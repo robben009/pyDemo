@@ -1,8 +1,8 @@
 # （Flask-SQLAlchemy版）
 from flask import Blueprint, request, jsonify
 
-from webDemo.model import db
-from webDemo.model.user import User
+from FlaskDemo.model import db
+from FlaskDemo.model.user import User
 
 # 创建蓝图
 api_plus = Blueprint('api_plus', __name__)

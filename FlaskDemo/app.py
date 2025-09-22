@@ -4,7 +4,7 @@ from flask import Flask
 from api import api_bp  # 导入 api.py 中的蓝图
 from config import config
 from api_plus import api_plus
-from webDemo.model import db
+from FlaskDemo.model import db
 
 # 初始化Flask应用
 app = Flask(__name__)
