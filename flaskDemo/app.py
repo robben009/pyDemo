@@ -2,15 +2,15 @@
 from flask import Flask
 
 from api import api_bp  # 导入 api.py 中的蓝图
-from config import config
+from config import envConf
 from api_plus import api_plus
-from FlaskDemo.model import db
+from flaskDemo.model import db
 
 # 初始化Flask应用
 app = Flask(__name__)
 
 # 加载配置（默认开发环境）
-app.config.from_object(config['default'])
+app.config.from_object(envConf['default'])
 
 # 注册蓝图
 app.register_blueprint(api_bp)

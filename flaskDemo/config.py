@@ -27,37 +27,11 @@ class ProductionConfig(Config):
     MYSQL_MAX_OVERFLOW = 20
 
 # 配置映射，方便切换环境
-config = {
+envConf = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,
     'default': DevelopmentConfig
 }
-
-
-
-# # 初始化SQLAlchemy
-# db = SQLAlchemy(app)
-#
-# # 定义User模型（映射到users表）
-# class User(db.Model):
-#     __tablename__ = 'users'  # 数据库表名
-#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-#     name = db.Column(db.String(50), nullable=False)
-#     age = db.Column(db.Integer, nullable=False)
-#     email = db.Column(db.String(100), nullable=False, unique=True)
-#     create_time = db.Column(db.TIMESTAMP, default=db.func.current_timestamp())
-#
-#     # 将模型转换为字典（便于返回JSON）
-#     def to_dict(self):
-#         return {
-#             'id': self.id,
-#             'name': self.name,
-#             'age': self.age,
-#             'email': self.email,
-#             'create_time': self.create_time.strftime('%Y-%m-%d %H:%M:%S')
-#         }
-
-
 
 
 # 数据库连接函数
