@@ -1,4 +1,3 @@
-
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
@@ -24,7 +23,7 @@ def create_user(user: UserInfoCreate, db: Session = Depends(get_db)):
     """
     db_user = UserInfo(**user.model_dump())
     db.add(db_user)
-    db.commit()
+    # 自动提交，无需手动调用 db.commit()
     db.refresh(db_user)
     return db_user
 
@@ -74,7 +73,7 @@ def update_user(user_id: int, user: UserInfoUpdate, db: Session = Depends(get_db
     for key, value in update_data.items():
         setattr(db_user, key, value)
     
-    db.commit()
+    # 自动提交，无需手动调用 db.commit()
     db.refresh(db_user)
     return db_user
 
@@ -92,7 +91,7 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="用户未找到")
     
     db.delete(db_user)
-    db.commit()
+    # 自动提交，无需手动调用 db.commit()
     return {"message": "用户删除成功"}
 
 
